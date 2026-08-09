@@ -1,0 +1,6 @@
+{
+  "name": "Global VAT Calculator",
+  "description": "Fast, free global VAT/GST and Sales Tax calculator with country detection, currency formatting, and instant calculations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

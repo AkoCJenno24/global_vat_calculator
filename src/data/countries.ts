@@ -1,0 +1,438 @@
+import { Country } from '../types';
+
+/**
+ * Global VAT / GST / Sales Tax Country Database
+ * 
+ * NOTE: Tax rates provided here are standard reference rates for general goods and services.
+ * Real-world tax obligations may vary depending on local jurisdiction, specific product categories,
+ * exemptions, and transaction types. Rates are regularly updated but should always be verified
+ * with the respective local tax authority or a certified tax professional.
+ */
+
+export const COUNTRIES: Country[] = [
+  {
+    code: 'PH',
+    name: 'Philippines',
+    taxName: 'VAT',
+    taxRate: 12,
+    currencyCode: 'PHP',
+    currencySymbol: '₱',
+    flag: '🇵🇭',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 12],
+    taxAuthority: 'Bureau of Internal Revenue (BIR)',
+    notes: 'Standard Value Added Tax (VAT) rate in the Philippines is 12%. Essential goods and services may be zero-rated or exempt.'
+  },
+  {
+    code: 'US',
+    name: 'United States',
+    taxName: 'Sales Tax',
+    taxRate: 6.5,
+    currencyCode: 'USD',
+    currencySymbol: '$',
+    flag: '🇺🇸',
+    region: 'Americas',
+    reducedRates: [0, 4, 6, 7.25, 8.875],
+    taxAuthority: 'State Revenue / Tax Departments & IRS',
+    notes: 'The US does not have a federal Value Added Tax (VAT). Sales tax is levied at state, county, and municipal levels ranging from 0% (e.g., Oregon, Delaware) up to 10.25% in high-tax cities. 6.5% represents a typical combined average rate.'
+  },
+  {
+    code: 'CA',
+    name: 'Canada',
+    taxName: 'GST/HST',
+    taxRate: 13,
+    currencyCode: 'CAD',
+    currencySymbol: 'CA$',
+    flag: '🇨🇦',
+    region: 'Americas',
+    reducedRates: [5, 12, 13, 15],
+    taxAuthority: 'Canada Revenue Agency (CRA)',
+    notes: 'Canada applies 5% federal GST. Many provinces combine GST with Provincial Sales Tax (HST) totaling between 5% and 15% depending on the province.'
+  },
+  {
+    code: 'GB',
+    name: 'United Kingdom',
+    taxName: 'VAT',
+    taxRate: 20,
+    currencyCode: 'GBP',
+    currencySymbol: '£',
+    flag: '🇬🇧',
+    region: 'Europe',
+    reducedRates: [0, 5, 20],
+    taxAuthority: 'HM Revenue & Customs (HMRC)',
+    notes: 'Standard VAT rate is 20%. Reduced rate of 5% applies to home energy and sanitary items; 0% applies to food, children’s clothes, and books.'
+  },
+  {
+    code: 'AU',
+    name: 'Australia',
+    taxName: 'GST',
+    taxRate: 10,
+    currencyCode: 'AUD',
+    currencySymbol: 'A$',
+    flag: '🇦🇺',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 10],
+    taxAuthority: 'Australian Taxation Office (ATO)',
+    notes: 'Goods and Services Tax (GST) is a flat 10% nationwide rate applied to most supplies of goods and services.'
+  },
+  {
+    code: 'NZ',
+    name: 'New Zealand',
+    taxName: 'GST',
+    taxRate: 15,
+    currencyCode: 'NZD',
+    currencySymbol: 'NZ$',
+    flag: '🇳🇿',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 15],
+    taxAuthority: 'Inland Revenue Department (IRD)',
+    notes: 'GST is charged at a flat 15% on almost all goods and services supplied in New Zealand.'
+  },
+  {
+    code: 'SG',
+    name: 'Singapore',
+    taxName: 'GST',
+    taxRate: 9,
+    currencyCode: 'SGD',
+    currencySymbol: 'S$',
+    flag: '🇸🇬',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 9],
+    taxAuthority: 'Inland Revenue Authority of Singapore (IRAS)',
+    notes: 'Goods and Services Tax (GST) rate is 9% as of 2024.'
+  },
+  {
+    code: 'MY',
+    name: 'Malaysia',
+    taxName: 'SST',
+    taxRate: 8,
+    currencyCode: 'MYR',
+    currencySymbol: 'RM',
+    flag: '🇲🇾',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 5, 6, 8, 10],
+    taxAuthority: 'Royal Malaysian Customs Department',
+    notes: 'Sales and Services Tax (SST) ranges from 5% to 10% for sales tax, and 6% to 8% for services tax.'
+  },
+  {
+    code: 'TH',
+    name: 'Thailand',
+    taxName: 'VAT',
+    taxRate: 7,
+    currencyCode: 'THB',
+    currencySymbol: '฿',
+    flag: '🇹🇭',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 7],
+    taxAuthority: 'The Revenue Department of Thailand',
+    notes: 'The standard VAT rate is 7% (reduced from the statutory 10% rate by decree).'
+  },
+  {
+    code: 'ID',
+    name: 'Indonesia',
+    taxName: 'VAT (PPN)',
+    taxRate: 11,
+    currencyCode: 'IDR',
+    currencySymbol: 'Rp',
+    flag: '🇮🇩',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 11, 12],
+    taxAuthority: 'Directorate General of Taxes (DGT)',
+    notes: 'Pajak Pertambahan Nilai (PPN) is currently 11%, scheduled to rise to 12% under tax policy reform.'
+  },
+  {
+    code: 'IN',
+    name: 'India',
+    taxName: 'GST',
+    taxRate: 18,
+    currencyCode: 'INR',
+    currencySymbol: '₹',
+    flag: '🇮🇳',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 5, 12, 18, 28],
+    taxAuthority: 'Goods and Services Tax Network (GSTN)',
+    notes: 'India utilizes a tiered GST structure: 0%, 5%, 12%, 18% (standard for services), and 28% for luxury items.'
+  },
+  {
+    code: 'JP',
+    name: 'Japan',
+    taxName: 'Consumption Tax',
+    taxRate: 10,
+    currencyCode: 'JPY',
+    currencySymbol: '¥',
+    flag: '🇯🇵',
+    region: 'Asia-Pacific',
+    reducedRates: [8, 10],
+    taxAuthority: 'National Tax Agency (NTA)',
+    notes: 'Standard Japanese Consumption Tax is 10%. A reduced 8% rate applies to groceries and daily newspapers.'
+  },
+  {
+    code: 'KR',
+    name: 'South Korea',
+    taxName: 'VAT',
+    taxRate: 10,
+    currencyCode: 'KRW',
+    currencySymbol: '₩',
+    flag: '🇰🇷',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 10],
+    taxAuthority: 'National Tax Service (NTS)',
+    notes: 'Value Added Tax is a flat 10% rate applied to sales of goods and services.'
+  },
+  {
+    code: 'CN',
+    name: 'China',
+    taxName: 'VAT',
+    taxRate: 13,
+    currencyCode: 'CNY',
+    currencySymbol: '¥',
+    flag: '🇨🇳',
+    region: 'Asia-Pacific',
+    reducedRates: [0, 6, 9, 13],
+    taxAuthority: 'State Taxation Administration (STA)',
+    notes: 'China employs tiered VAT rates: 13% for general manufacturing/sales, 9% for transport/construction, and 6% for services.'
+  },
+  {
+    code: 'AE',
+    name: 'United Arab Emirates',
+    taxName: 'VAT',
+    taxRate: 5,
+    currencyCode: 'AED',
+    currencySymbol: 'AED',
+    flag: '🇦🇪',
+    region: 'Middle East & Africa',
+    reducedRates: [0, 5],
+    taxAuthority: 'Federal Tax Authority (FTA)',
+    notes: 'UAE applies a standard 5% VAT rate across most goods and services.'
+  },
+  {
+    code: 'SA',
+    name: 'Saudi Arabia',
+    taxName: 'VAT',
+    taxRate: 15,
+    currencyCode: 'SAR',
+    currencySymbol: 'SAR',
+    flag: '🇸🇦',
+    region: 'Middle East & Africa',
+    reducedRates: [0, 15],
+    taxAuthority: 'Zakat, Tax and Customs Authority (ZATCA)',
+    notes: 'Standard VAT rate in Saudi Arabia is 15%.'
+  },
+  {
+    code: 'DE',
+    name: 'Germany',
+    taxName: 'MwSt. / VAT',
+    taxRate: 19,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇩🇪',
+    region: 'Europe',
+    reducedRates: [0, 7, 19],
+    taxAuthority: 'Federal Central Tax Office (BZSt)',
+    notes: 'Standard Mehrwertsteuer (MwSt.) is 19%. A reduced 7% rate applies to books, food, and cultural events.'
+  },
+  {
+    code: 'FR',
+    name: 'France',
+    taxName: 'TVA / VAT',
+    taxRate: 20,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇫🇷',
+    region: 'Europe',
+    reducedRates: [2.1, 5.5, 10, 20],
+    taxAuthority: 'Direction Générale des Finances Publiques (DGFiP)',
+    notes: 'Standard Taxe sur la Valeur Ajoutée (TVA) is 20%. Reduced rates include 10% (catering/renovation), 5.5% (food/books), and 2.1% (medication).'
+  },
+  {
+    code: 'IT',
+    name: 'Italy',
+    taxName: 'IVA / VAT',
+    taxRate: 22,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇮🇹',
+    region: 'Europe',
+    reducedRates: [4, 5, 10, 22],
+    taxAuthority: 'Agenzia delle Entrate',
+    notes: 'Standard Imposta sul Valore Aggiunto (IVA) is 22%. Reduced rates: 10%, 5%, and 4% for basic items.'
+  },
+  {
+    code: 'ES',
+    name: 'Spain',
+    taxName: 'IVA / VAT',
+    taxRate: 21,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇪🇸',
+    region: 'Europe',
+    reducedRates: [0, 4, 10, 21],
+    taxAuthority: 'Agencia Tributaria (AEAT)',
+    notes: 'Standard IVA rate is 21%. Reduced 10% applies to passenger transport and hotels; 4% super-reduced for basic foodstuffs.'
+  },
+  {
+    code: 'NL',
+    name: 'Netherlands',
+    taxName: 'BTW / VAT',
+    taxRate: 21,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇳🇱',
+    region: 'Europe',
+    reducedRates: [0, 9, 21],
+    taxAuthority: 'Belastingdienst',
+    notes: 'Standard Belasting over de Toegevoegde Waarde (BTW) is 21%. A reduced 9% rate applies to groceries and medicines.'
+  },
+  {
+    code: 'SE',
+    name: 'Sweden',
+    taxName: 'Moms / VAT',
+    taxRate: 25,
+    currencyCode: 'SEK',
+    currencySymbol: 'kr',
+    flag: '🇸🇪',
+    region: 'Europe',
+    reducedRates: [6, 12, 25],
+    taxAuthority: 'Skatteverket',
+    notes: 'Standard Mervärdesskatt (Moms) is 25%. Reduced rates are 12% (food, hotels) and 6% (books, transport).'
+  },
+  {
+    code: 'NO',
+    name: 'Norway',
+    taxName: 'MVA / VAT',
+    taxRate: 25,
+    currencyCode: 'NOK',
+    currencySymbol: 'kr',
+    flag: '🇳🇴',
+    region: 'Europe',
+    reducedRates: [0, 12, 15, 25],
+    taxAuthority: 'Skatteetaten',
+    notes: 'Standard Merverdiavgift (MVA) is 25%. Reduced rates apply to foodstuffs (15%) and transport/cinemas (12%).'
+  },
+  {
+    code: 'DK',
+    name: 'Denmark',
+    taxName: 'Moms / VAT',
+    taxRate: 25,
+    currencyCode: 'DKK',
+    currencySymbol: 'kr.',
+    flag: '🇩🇰',
+    region: 'Europe',
+    reducedRates: [0, 25],
+    taxAuthority: 'Skatteforvaltningen (SKAT)',
+    notes: 'Denmark levies a flat 25% Moms rate on virtually all goods and services with minimal reduced exceptions.'
+  },
+  {
+    code: 'CH',
+    name: 'Switzerland',
+    taxName: 'MWST / VAT',
+    taxRate: 8.1,
+    currencyCode: 'CHF',
+    currencySymbol: 'CHF',
+    flag: '🇨🇭',
+    region: 'Europe',
+    reducedRates: [2.6, 3.8, 8.1],
+    taxAuthority: 'Federal Tax Administration (ESTV)',
+    notes: 'Standard MWST rate is 8.1%. Reduced rate is 2.6% (food, books) and special accommodation rate is 3.8%.'
+  },
+  {
+    code: 'AT',
+    name: 'Austria',
+    taxName: 'MwSt. / VAT',
+    taxRate: 20,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇦🇹',
+    region: 'Europe',
+    reducedRates: [10, 13, 20],
+    taxAuthority: 'Finanzamt (Federal Ministry of Finance)',
+    notes: 'Standard Mehrwertsteuer is 20%. Reduced rates are 10% (food/rent) and 13% (cultural events).'
+  },
+  {
+    code: 'BE',
+    name: 'Belgium',
+    taxName: 'TVA / BTW',
+    taxRate: 21,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇧🇪',
+    region: 'Europe',
+    reducedRates: [0, 6, 12, 21],
+    taxAuthority: 'FPS Finance',
+    notes: 'Standard Belgian VAT rate is 21%. Reduced rates are 12% (restaurant food) and 6% (basic necessities).'
+  },
+  {
+    code: 'IE',
+    name: 'Ireland',
+    taxName: 'VAT',
+    taxRate: 23,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇮🇪',
+    region: 'Europe',
+    reducedRates: [0, 4.8, 9, 13.5, 23],
+    taxAuthority: 'Office of the Revenue Commissioners',
+    notes: 'Standard VAT rate is 23%. Reduced rate is 13.5% (fuel, construction) and 9% (e-books, newspapers).'
+  },
+  {
+    code: 'PT',
+    name: 'Portugal',
+    taxName: 'IVA / VAT',
+    taxRate: 23,
+    currencyCode: 'EUR',
+    currencySymbol: '€',
+    flag: '🇵🇹',
+    region: 'Europe',
+    reducedRates: [6, 13, 23],
+    taxAuthority: 'Autoridade Tributária e Aduaneira (AT)',
+    notes: 'Mainland Portugal standard IVA is 23%. Reduced rates are 13% and 6% (lower rates apply in Madeira and Azores).'
+  },
+  {
+    code: 'MX',
+    name: 'Mexico',
+    taxName: 'IVA / VAT',
+    taxRate: 16,
+    currencyCode: 'MXN',
+    currencySymbol: 'Mex$',
+    flag: '🇲🇽',
+    region: 'Americas',
+    reducedRates: [0, 8, 16],
+    taxAuthority: 'Servicio de Administración Tributaria (SAT)',
+    notes: 'Standard Impuesto al Valor Agregado (IVA) is 16%. A reduced 8% rate applies to northern border free zones.'
+  },
+  {
+    code: 'BR',
+    name: 'Brazil',
+    taxName: 'ICMS / ISS',
+    taxRate: 17,
+    currencyCode: 'BRL',
+    currencySymbol: 'R$',
+    flag: '🇧🇷',
+    region: 'Americas',
+    reducedRates: [7, 12, 17, 18, 20],
+    taxAuthority: 'Receita Federal do Brasil',
+    notes: 'Brazil’s indirect tax system includes state ICMS (17% to 20%), federal PIS/COFINS, and municipal ISS. Tax reform (IBS/CBS) is transitioning toward a dual VAT system.'
+  },
+  {
+    code: 'ZA',
+    name: 'South Africa',
+    taxName: 'VAT',
+    taxRate: 15,
+    currencyCode: 'ZAR',
+    currencySymbol: 'R',
+    flag: '🇿🇦',
+    region: 'Middle East & Africa',
+    reducedRates: [0, 15],
+    taxAuthority: 'South African Revenue Service (SARS)',
+    notes: 'Standard Value Added Tax (VAT) rate in South Africa is 15%.'
+  }
+];
+
+export const DEFAULT_COUNTRY_CODE = 'PH';
+
+export function getCountryByCode(code: string): Country {
+  const found = COUNTRIES.find((c) => c.code.toUpperCase() === code.toUpperCase());
+  if (found) return found;
+  // Fallback to default country (Philippines)
+  return COUNTRIES.find((c) => c.code === DEFAULT_COUNTRY_CODE) || COUNTRIES[0];
+}
